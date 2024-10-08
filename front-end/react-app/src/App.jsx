@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import SearchBar from "./SearchBar"
+
+import Header from "./Header"
+import FilterBar from "./FilterBar"
+import React, {createContext, useState} from 'react';
+import ResultsGrid from "./ResultsGrid";
+
+export const FilterContext = createContext();
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [filters, setFilters] = useState([{"Culture" : null}, {"Dietary": null}, {"Distance": null}, {"MealType": null},{"Price": null}, {"Rating": null}]);
+    
+    return (
+      <FilterContext.Provider value={{filters, setFilters}}>
+        <Header/>
+        <SearchBar></SearchBar>
+        <FilterBar></FilterBar>
+        <ResultsGrid></ResultsGrid>
+      </FilterContext.Provider>
+    )
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
 }
 
 export default App
