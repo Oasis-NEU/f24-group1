@@ -6,12 +6,24 @@ import {InputContext} from './App.jsx';
 
 import locations from './MockData/housingData.js';
 
+/**
+ * Represents the address form for selecting user location.
+ * @param {function} props - give method setLocation for changing the user location
+ * @returns the address form component
+ */
 function AddressForm(props) {
 
     const {locationData, setLocationData, address, setAddress} = useContext(InputContext);
 
+
+    /**
+     * Represent the users current input into the addres form field.
+     */
     const [input, setInput] = useState("");
 
+    /**
+     * Cucrently in progress...
+     */
     function handleChange(event) {
         const {name, value} = event.target;
         setLocationData(prev => {
@@ -21,8 +33,11 @@ function AddressForm(props) {
         })
     }
 
+    /**
+     * Handles when submission button is clicked.
+     * Sets address to current input and display user address.
+     */
     const handleSubmitClick = () => {
-        
         if (input !== '') {
             setAddress(locations[input]);
         }else {
@@ -33,6 +48,10 @@ function AddressForm(props) {
         
     }
 
+    /**
+     * Represent a pop up input selections area for user to input Northeastern Housing Location.
+     * @returns the input component for selecting hou
+     */
     function renderUniversityHousingForm() {
         return (
             <div className='university-address-form'>
@@ -54,6 +73,10 @@ function AddressForm(props) {
         )
     }
 
+    /**
+     * Represent an adddres input form for selecting a non-northeastern location.
+     * @returns the address form component
+     */
     function renderAddressForm() {
         return (
             <div className='address-form'>
@@ -71,7 +94,6 @@ function AddressForm(props) {
              </div>
         )
     }
-
 
 
     return (

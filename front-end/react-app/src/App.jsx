@@ -6,18 +6,25 @@ import ResultsGrid from "./ResultsGrid";
 
 import React, {createContext, useState} from 'react';
 
-
+/**
+ * Context for addres data
+ */
 export const InputContext = createContext();
 
+/**
+ * Represent everything on the screen.
+ * @returns the main app component
+ */
 function App() {
-   
-    const [locationData, setLocationData] = useState({'address' : null, 'city': 'Boston', 'state' : 'Massachussets', 'zipCode' : '02115'});
 
+    /**
+     * Represent the users current address.
+     */
     const [address, setAddress] = useState('');
   
 
     return (
-      <InputContext.Provider value={{locationData, setLocationData, address, setAddress}}>
+      <InputContext.Provider value={{ address, setAddress}}>
         <Header/>
         <SearchBar/>
         <FilterBar/>

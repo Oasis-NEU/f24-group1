@@ -4,15 +4,29 @@ import './Styles/SearchBar.css';
 import AddressForm from './AddressForm';
 
 import { InputContext } from './App';
-import EditButton from './EditButton';
 
+
+/**
+ * Represent the search bar for the user to type in.
+ * Also includes the addres form button and dropdown 
+ * for the user to enter their location.
+ * @returns the Search bar and addres dropdown components
+ */
 function SearchBar() {
+
 
     const {address} = useContext(InputContext)
 
+    /**
+     * Represent the users current input into the search bar.
+     */
     const [input, setInput] = useState();
 
+    /**
+     * Represent is the location button was clicked.
+     */
     const [locationClicked, setLocationClicked] = useState(false);
+
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -20,6 +34,12 @@ function SearchBar() {
         }
     }
 
+
+
+    /**
+     * Displays the users current address
+     * @returns the users current address or 'No valid selected' if not found
+     */
     function renderAddress() {
         if (address !== '') {
             const message = `Current Address: ${address}`;
@@ -28,6 +48,12 @@ function SearchBar() {
         return  <p id='invalid-address'>*No valid address selected*</p>
     }
 
+    /**
+     * Dislays the addres components:
+     * If locationClicked then display the current address
+     * Otherwise dropdown the address form for user to input
+     * @returns 
+     */
     function renderAddressSection() {
         if (locationClicked) {
             return (
