@@ -10,9 +10,7 @@ function ResultsGrid() {
     return (
         <div className="results-grid">
             {
-                results.map(data => {
-                    return <RestarantData data={data}></RestarantData>
-                })
+                
             }
         </div>
     )

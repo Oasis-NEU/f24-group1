@@ -1,8 +1,8 @@
 import StarRating from "./StarRating";
-
+import './Styles/resultData.css';
 
 function RestarantData(props) {
-
+    
     const {name, rating, menu, image} = props.data;
 
 
@@ -20,8 +20,8 @@ function RestarantData(props) {
             <div className="menu-container"> 
                 
                 {
-                    menu.map(item => {
-                        return <p>{item}</p>
+                    menu.map((item, index) => {
+                        return <p key={index}>{item}</p>
                     })
                 }  
                 

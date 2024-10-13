@@ -1,25 +1,29 @@
-import SearchBar from "./SearchBar"
-
 import Header from "./Header"
+import SearchBar from "./SearchBar"
 import FilterBar from "./FilterBar"
-import React, {createContext, useState} from 'react';
 import ResultsGrid from "./ResultsGrid";
 
-export const FilterContext = createContext();
+
+import React, {createContext, useState} from 'react';
+
+
+export const InputContext = createContext();
 
 function App() {
-    const [filters, setFilters] = useState([{"Culture" : null}, {"Dietary": null}, {"Distance": null}, {"MealType": null},{"Price": null}, {"Rating": null}]);
-    
+   
+    const [locationData, setLocationData] = useState({'address' : null, 'city': 'Boston', 'state' : 'Massachussets', 'zipCode' : '02115'});
+
+    const [address, setAddress] = useState('');
+  
+
     return (
-      <FilterContext.Provider value={{filters, setFilters}}>
+      <InputContext.Provider value={{locationData, setLocationData, address, setAddress}}>
         <Header/>
-        <SearchBar></SearchBar>
-        <FilterBar></FilterBar>
-        <ResultsGrid></ResultsGrid>
-      </FilterContext.Provider>
-    )
-
-
+        <SearchBar/>
+        <FilterBar/>
+        <ResultsGrid/>
+      </InputContext.Provider>
+    );
 }
 
 export default App

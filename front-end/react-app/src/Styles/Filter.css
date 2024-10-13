@@ -1,0 +1,56 @@
+.filter-section {
+    width: 100%;
+    height: 100%;
+  }
+  
+.filter-section button {
+    font-size: 15px;
+    border: 0.5px solid black;
+    margin: auto;
+    border-radius: 5px;
+    width: 80%;
+    height: 30%;
+    margin-top: 2%;
+    padding: 2%;
+    color: black;
+    background-color: white;
+
+    box-shadow: 2px 2px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0.4rem #dfd9d9;
+
+}
+  
+  
+.filter-section button:active {
+    box-shadow: none;
+    background-color: lightgrey;
+   
+
+    transform: translateY(00.4rem);
+    box-shadow: none;
+
+}
+
+
+
+
+.pop-up {
+    border: 0.5px solid black;
+    border-radius: 5px;
+    transform: translateY(70px);
+    margin-top: -60px;
+    padding: 5%;
+    z-index: 2;
+    margin-right: 20%;
+
+    box-shadow: 2px 2px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0.4rem #dfd9d9;
+}
+  
+.pop-up button{
+    width: 100%;
+    box-shadow: none;
+    margin-bottom: 3%;
+}

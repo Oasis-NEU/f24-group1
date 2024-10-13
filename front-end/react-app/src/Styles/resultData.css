@@ -1,0 +1,47 @@
+
+
+
+.result-container {
+    border: 0.5px solid black;
+    border-radius: 1%;
+    box-shadow: 2px 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0.4rem #dfd9d9;
+    padding: 5%;
+  }
+  
+  .result-container button {
+    padding: 2%;
+    box-shadow: 2px 2px;
+  }
+  
+  .result-container button:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+  
+  
+  .star-rating {
+    margin-top: 2%;
+    margin-left: 2%;
+    font-size: 15px;
+    border: 0.5px solid black;
+    border-radius: 20px;
+    padding: 2%;
+  }
+
+
+
+
+  .restaurant-header {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+    margin-bottom: -3%;
+  }
+  
+  
+  
+  .menu-container {
+    margin-left: 0%;
+  }
