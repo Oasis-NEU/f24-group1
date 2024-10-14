@@ -1,3 +1,4 @@
+import ResultBox from "./ResultBox";
 
 
 /**
@@ -7,9 +8,10 @@
 function ResultsGrid() {
     return (
         <div className="results-grid">
-            {
-                
-            }
+            <ResultBox></ResultBox>
+            <ResultBox></ResultBox>
+            <ResultBox></ResultBox>
+            <ResultBox></ResultBox>
         </div>
     )
 }

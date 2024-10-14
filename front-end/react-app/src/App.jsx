@@ -1,10 +1,10 @@
 import Header from "./Header"
 import SearchBar from "./SearchBar"
-import FilterBar from "./FilterBar"
 import ResultsGrid from "./ResultsGrid";
-
-
 import React, {createContext, useState} from 'react';
+import Dietary from "./Filters/Dietary";
+import Price from "./Filters/Price";
+import Rating from "./Filters/Rating";
 
 /**
  * Context for addres data
@@ -26,9 +26,15 @@ function App() {
     return (
       <InputContext.Provider value={{ address, setAddress}}>
         <Header/>
-        <SearchBar/>
-        <FilterBar/>
         <ResultsGrid/>
+        <SearchBar/>
+        <h1>Testing Filter Components will appear down here</h1>
+        <h2>Dietary Component</h2>
+        <Dietary/>
+        <h2>Price Component</h2>
+        <Price/>
+        <h2>Rating Component</h2>
+        <Rating/>
       </InputContext.Provider>
     );
 }

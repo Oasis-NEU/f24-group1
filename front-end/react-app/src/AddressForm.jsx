@@ -13,8 +13,8 @@ import locations from './MockData/housingData.js';
  */
 function AddressForm(props) {
 
-    const {locationData, setLocationData, address, setAddress} = useContext(InputContext);
-
+   
+    const {address, setAddress} = useContext(InputContext);
 
     /**
      * Represent the users current input into the addres form field.
@@ -44,8 +44,6 @@ function AddressForm(props) {
             setAddress('')
         }
         props.setLocationClicked(prev => !prev)
-        
-        
     }
 
     /**

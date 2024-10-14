@@ -14,7 +14,9 @@ import { InputContext } from './App';
  */
 function SearchBar() {
 
-
+    /**
+     * Taking address value from main App Component.
+     */
     const {address} = useContext(InputContext)
 
     /**
@@ -34,8 +36,6 @@ function SearchBar() {
         }
     }
 
-
-
     /**
      * Displays the users current address
      * @returns the users current address or 'No valid selected' if not found
@@ -50,9 +50,8 @@ function SearchBar() {
 
     /**
      * Dislays the addres components:
-     * If locationClicked then display the current address
-     * Otherwise dropdown the address form for user to input
-     * @returns 
+     * @returns the address if locationClicked then display the current address
+     *          otherwise dropdown the address form for user to input
      */
     function renderAddressSection() {
         if (locationClicked) {
@@ -63,18 +62,26 @@ function SearchBar() {
         return <AddressForm setLocationClicked={setLocationClicked}/>
     }
 
+    
+    function renderSearchButton() {
+        return (
+            <button></button>
+        )
+    }
    
+    
     return (
         <>
             <div className="search-bar">
+                <Location setLocationClicked={setLocationClicked}/>
                 <input
                     value={input}
                     onKeyDown={(event) => handleKeyDown(event)}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Search here...">
+                    
                 </input>
-                <Location setLocationClicked={setLocationClicked}
-                />
+                
             </div>
             {renderAddressSection()}
         </>
