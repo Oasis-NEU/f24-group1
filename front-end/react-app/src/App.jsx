@@ -5,6 +5,7 @@ import React, {createContext, useState} from 'react';
 import Dietary from "./Filters/Dietary";
 import Price from "./Filters/Price";
 import Rating from "./Filters/Rating";
+import FoodSuggestions from "./FoodSuggestions";
 
 /**
  * Context for addres data
@@ -22,19 +23,15 @@ function App() {
      */
     const [address, setAddress] = useState('');
   
+    const [search, setSearch] = useState('');
 
     return (
-      <InputContext.Provider value={{ address, setAddress}}>
+      <InputContext.Provider value={{ address, setAddress, search : search, setSearch : setSearch}}>
         <Header/>
         <ResultsGrid/>
+        
         <SearchBar/>
-        <h1>Testing Filter Components will appear down here</h1>
-        <h2>Dietary Component</h2>
-        <Dietary/>
-        <h2>Price Component</h2>
-        <Price/>
-        <h2>Rating Component</h2>
-        <Rating/>
+        
       </InputContext.Provider>
     );
 }

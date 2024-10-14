@@ -17,13 +17,9 @@ function SearchBar() {
     /**
      * Taking address value from main App Component.
      */
-    const {address} = useContext(InputContext)
+    const {address, search, setSearch} = useContext(InputContext)
 
-    /**
-     * Represent the users current input into the search bar.
-     */
-    const [input, setInput] = useState();
-
+   
     /**
      * Represent is the location button was clicked.
      */
@@ -32,7 +28,7 @@ function SearchBar() {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            input.setInput(e.value)
+            setSearch(event.target.value);
         }
     }
 
@@ -75,9 +71,9 @@ function SearchBar() {
             <div className="search-bar">
                 <Location setLocationClicked={setLocationClicked}/>
                 <input
-                    value={input}
+                    value={search}
                     onKeyDown={(event) => handleKeyDown(event)}
-                    onChange={(e) => setInput(e.target.value)}
+                    onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search here...">
                     
                 </input>

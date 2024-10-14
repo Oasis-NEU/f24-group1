@@ -46,12 +46,14 @@ ipnut {
 
 
 .set-location-button {
-  border: 0.5px solid white;
+ 
   border-radius: 10px;
   padding: 6px;
   margin-right: 1%;
   box-shadow: 0 0.4rem #dfd9d9;
   box-shadow: none;
+  
+  border: 0.5px solid white;
 }
 
 .set-location-button:active {
