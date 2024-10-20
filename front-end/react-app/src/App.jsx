@@ -1,7 +1,7 @@
 import Header from "./Header"
-import SearchBar from "./SearchBar"
-import ResultsGrid from "./ResultsGrid";
+import SearchBar from "./InputComponents/SearchBar.jsx"
 import {createContext, useState} from 'react';
+import FoodSuggestions from "./FoodSuggestions.jsx";
 ;
 
 /**
@@ -22,14 +22,12 @@ function App() {
   
     const [search, setSearch] = useState('');
 
-    const [loading, setLoading] = useState(false);
 
     return (
       <InputContext.Provider value={{ address, setAddress, 
-                                      search : search, setSearch : setSearch, 
-                                      loading : loading, setLoading : setLoading}}>
+                                      search : search, setSearch : setSearch}}>
         <Header/>
-        <ResultsGrid/>
+        <FoodSuggestions/>
         <SearchBar/>
       </InputContext.Provider>
     );

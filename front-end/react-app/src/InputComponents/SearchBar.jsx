@@ -1,9 +1,9 @@
 import {useState, useContext} from 'react';
-import Location from './Location';
-import './Styles/SearchBar.css';
-import AddressForm from './AddressForm';
+import Location from '../Location.jsx';
+import '../Styles/SearchBar.css';
+import AddressForm from './AddressForm.jsx';
 
-import { InputContext } from './App';
+import { InputContext } from '../App.jsx';
  /**
   * test push/merge
   */
@@ -20,7 +20,7 @@ function SearchBar() {
     /**
      * Taking address value from main App Component.
      */
-    const {address, search, setSearch, setLoading} = useContext(InputContext)
+    const {address, search, } = useContext(InputContext)
 
    
     /**
@@ -31,8 +31,7 @@ function SearchBar() {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            setSearch(event.target.value);
-            setLoading(true);
+
         }
     }
 
