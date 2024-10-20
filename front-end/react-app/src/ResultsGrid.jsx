@@ -1,7 +1,7 @@
 import FoodSuggestions from "./FoodSuggestions";
 import Loader from "./Loader";
-import ResultBox from "./ResultBox";
-import React, {useState} from 'react';
+import {useContext} from "react";
+import { InputContext } from './App';
 
 /**
  * Represent the search results in a grid.
@@ -9,28 +9,19 @@ import React, {useState} from 'react';
  */
 function ResultsGrid() {
 
-    const [loading, setLoading] = useState(false);
+    const {loading} = useContext(InputContext);
 
-    const fakeResults = [<ResultBox></ResultBox>,
-                         <ResultBox></ResultBox>,
-                         <ResultBox></ResultBox>,
-                         <ResultBox></ResultBox>
-                        ];
+    // const fakeResults = [<ResultBox></ResultBox>,
+    //                      <ResultBox></ResultBox>,
+    //                      <ResultBox></ResultBox>,
+    //                      <ResultBox></ResultBox>
+    //                     ];
 
     function renderResult() {
         if (loading) {
             return <Loader/>
         }
         return <FoodSuggestions/>
-        return (
-            <div className="results-grid">
-            {
-                fakeResults.map(result => {
-                    return result;
-                })
-            }
-            </div>
-        )
     }
 
     return (

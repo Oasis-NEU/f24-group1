@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import PropTypes from "prop-types";
 
 function Location(props) {
 
@@ -14,3 +14,7 @@ function Location(props) {
 }
 
 export default Location;
+
+Location.propTypes = {
+    setLocationClicked: PropTypes.func.isRequired
+}

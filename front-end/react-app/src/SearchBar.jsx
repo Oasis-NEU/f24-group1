@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import {useState, useContext} from 'react';
 import Location from './Location';
 import './Styles/SearchBar.css';
 import AddressForm from './AddressForm';
@@ -17,18 +17,19 @@ function SearchBar() {
     /**
      * Taking address value from main App Component.
      */
-    const {address, search, setSearch} = useContext(InputContext)
+    const {address, search, setSearch, setLoading} = useContext(InputContext)
 
    
     /**
      * Represent is the location button was clicked.
      */
-    const [locationClicked, setLocationClicked] = useState(false);
+    const [locationClicked, setLocationClicked] = useState(true);
 
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             setSearch(event.target.value);
+            setLoading(true);
         }
     }
 
@@ -51,19 +52,11 @@ function SearchBar() {
      */
     function renderAddressSection() {
         if (locationClicked) {
-            return (
-                renderAddress()
-            )
+            return renderAddress();
         }
         return <AddressForm setLocationClicked={setLocationClicked}/>
     }
 
-    
-    function renderSearchButton() {
-        return (
-            <button></button>
-        )
-    }
    
     
     return (
@@ -75,8 +68,8 @@ function SearchBar() {
                     onKeyDown={(event) => handleKeyDown(event)}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search here...">
-                    
                 </input>
+
                 
             </div>
             {renderAddressSection()}

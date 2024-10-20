@@ -1,6 +1,6 @@
 import './Styles/FoodSuggestions.css';
 
-import React, {useContext, useEffect} from 'react';
+import {useContext} from 'react';
 import { InputContext } from './App';
 
 /**
@@ -45,7 +45,6 @@ function FoodSuggestions() {
      */
     function renderFoodButton(name, index) {
         const link = getImageLink(name);
-        console.log(typeof(name));
         return (
             <button key={name+index} onClick={() => handleClick(name)}>
                 <img src={link}></img>
@@ -56,17 +55,13 @@ function FoodSuggestions() {
 
 
     return (
-        <>
-        
         <div className='suggestions-container'>
-            
             {
                 options.map((name, index) => {
                     return renderFoodButton(name, index);
                 })
             }
         </div>
-        </>
     )
 }
 

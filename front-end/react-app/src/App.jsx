@@ -1,11 +1,8 @@
 import Header from "./Header"
 import SearchBar from "./SearchBar"
 import ResultsGrid from "./ResultsGrid";
-import React, {createContext, useState} from 'react';
-import Dietary from "./Filters/Dietary";
-import Price from "./Filters/Price";
-import Rating from "./Filters/Rating";
-import FoodSuggestions from "./FoodSuggestions";
+import {createContext, useState} from 'react';
+;
 
 /**
  * Context for addres data
@@ -25,13 +22,15 @@ function App() {
   
     const [search, setSearch] = useState('');
 
+    const [loading, setLoading] = useState(false);
+
     return (
-      <InputContext.Provider value={{ address, setAddress, search : search, setSearch : setSearch}}>
+      <InputContext.Provider value={{ address, setAddress, 
+                                      search : search, setSearch : setSearch, 
+                                      loading : loading, setLoading : setLoading}}>
         <Header/>
         <ResultsGrid/>
-        
         <SearchBar/>
-        
       </InputContext.Provider>
     );
 }
