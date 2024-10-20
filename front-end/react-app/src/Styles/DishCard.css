@@ -1,0 +1,49 @@
+.dish-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220px;
+  padding: 16px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.dish-card:hover {
+  transform: translateY(-5px); /* Lift card on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.dish-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover; 
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.dish-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.restaurant-name {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+  flex-wrap: wrap; 
+}

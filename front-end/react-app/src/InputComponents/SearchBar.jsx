@@ -20,7 +20,7 @@ function SearchBar() {
     /**
      * Taking address value from main App Component.
      */
-    const {address, search, } = useContext(InputContext)
+    const {address, userQuery, setUserQuery, setHasEntered} = useContext(InputContext)
 
    
     /**
@@ -30,8 +30,21 @@ function SearchBar() {
 
 
     const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && userQuery.trim() !== '') { // don't search if only whitespace
+            setHasEntered(true);
+            console.log("has entered");
+        } else {
+            console.log(`userQuery: ${userQuery}`);
+        }
+    }
 
+    /**
+     * Don't update user search bar if user has only pressed space.
+     * @param event
+     */
+    const handleChange = (event) => {
+        if(event.target.value.trim() !== '' || userQuery.length > event.target.value.length) {
+            setUserQuery(event.target.value)
         }
     }
 
@@ -66,9 +79,9 @@ function SearchBar() {
             <div className="search-bar">
                 <Location setLocationClicked={setLocationClicked}/>
                 <input
-                    value={search}
+                    value={userQuery}
                     onKeyDown={(event) => handleKeyDown(event)}
-                    onChange={(e) => setSearch(e.target.value)}
+                    onChange={(e) => handleChange(e)}
                     placeholder="Search here...">
                 </input>
 
