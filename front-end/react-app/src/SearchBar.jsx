@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import {useState, useContext} from 'react';
 import Location from './Location';
 import './Styles/SearchBar.css';
 import AddressForm from './AddressForm';
@@ -17,27 +17,24 @@ import { InputContext } from './App';
  */
 function SearchBar() {
 
-
-    const {address} = useContext(InputContext)
-
     /**
-     * Represent the users current input into the search bar.
+     * Taking address value from main App Component.
      */
-    const [input, setInput] = useState();
+    const {address, search, setSearch, setLoading} = useContext(InputContext)
 
+   
     /**
      * Represent is the location button was clicked.
      */
-    const [locationClicked, setLocationClicked] = useState(false);
+    const [locationClicked, setLocationClicked] = useState(true);
 
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            input.setInput(e.value)
+            setSearch(event.target.value);
+            setLoading(true);
         }
     }
-
-
 
     /**
      * Displays the users current address
@@ -53,31 +50,30 @@ function SearchBar() {
 
     /**
      * Dislays the addres components:
-     * If locationClicked then display the current address
-     * Otherwise dropdown the address form for user to input
-     * @returns 
+     * @returns the address if locationClicked then display the current address
+     *          otherwise dropdown the address form for user to input
      */
     function renderAddressSection() {
         if (locationClicked) {
-            return (
-                renderAddress()
-            )
+            return renderAddress();
         }
         return <AddressForm setLocationClicked={setLocationClicked}/>
     }
 
    
+    
     return (
         <>
             <div className="search-bar">
+                <Location setLocationClicked={setLocationClicked}/>
                 <input
-                    value={input}
+                    value={search}
                     onKeyDown={(event) => handleKeyDown(event)}
-                    onChange={(e) => setInput(e.target.value)}
+                    onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search here...">
                 </input>
-                <Location setLocationClicked={setLocationClicked}
-                />
+
+                
             </div>
             {renderAddressSection()}
         </>

@@ -1,10 +1,8 @@
 import Header from "./Header"
 import SearchBar from "./SearchBar"
-import FilterBar from "./FilterBar"
 import ResultsGrid from "./ResultsGrid";
-
-
-import React, {createContext, useState} from 'react';
+import {createContext, useState} from 'react';
+;
 
 /**
  * Context for addres data
@@ -22,13 +20,17 @@ function App() {
      */
     const [address, setAddress] = useState('');
   
+    const [search, setSearch] = useState('');
+
+    const [loading, setLoading] = useState(false);
 
     return (
-      <InputContext.Provider value={{ address, setAddress}}>
+      <InputContext.Provider value={{ address, setAddress, 
+                                      search : search, setSearch : setSearch, 
+                                      loading : loading, setLoading : setLoading}}>
         <Header/>
-        <SearchBar/>
-        <FilterBar/>
         <ResultsGrid/>
+        <SearchBar/>
       </InputContext.Provider>
     );
 }

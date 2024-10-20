@@ -1,8 +1,18 @@
 * {
   font-family: 'Roboto', sans-serif;
-  background-color: white
+  background-color: black;
+  background-color: #343434;
+  background-color: #1C1C1C;
+  background-color: #2A2B32;
+  color: lightgrey;
+  color: #D1D5DB;
+
 }
 
+
+ipnut {
+  background-color: #D1D5DB;
+}
 
 
 
@@ -36,15 +46,16 @@
 
 
 .set-location-button {
-  border: 0.5px solid black;
   border-radius: 10px;
   padding: 6px;
-  margin-left: 1%;
+  margin-right: 1%;
   box-shadow: 0 0.4rem #dfd9d9;
+  box-shadow: none;
+  height: 100%;
 }
 
 .set-location-button:active {
- transform: translateY(00.4rem);
+ opacity: 0.7;
  box-shadow: none;
 }
 
@@ -52,7 +63,10 @@
 
 
 
-
+.result-box {
+  border: 2px solid white;
+  padding: 5%;
+}
 
 
 
