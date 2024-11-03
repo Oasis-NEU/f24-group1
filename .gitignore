@@ -27,3 +27,6 @@ dist-ssr
 .DS_Store
 
 .env
+
+#Virtual enviorment
+venv
