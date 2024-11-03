@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 #Mac specific stuff
-.DS_store
+.DS_Store
