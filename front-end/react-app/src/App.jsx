@@ -1,7 +1,7 @@
 import Header from "./Header"
-import SearchBar from "./SearchBar"
-import ResultsGrid from "./ResultsGrid";
+import SearchBar from "./InputComponents/SearchBar.jsx"
 import {createContext, useState} from 'react';
+import ScreenDelegator from "./ScreenDelegator.jsx";
 ;
 
 /**
@@ -20,18 +20,22 @@ function App() {
      */
     const [address, setAddress] = useState('');
   
-    const [search, setSearch] = useState('');
+    const [userQuery, setUserQuery] = useState('');
+    const [hasEntered, setHasEntered] = useState(false);
 
-    const [loading, setLoading] = useState(false);
+    const [results, setResults] = useState([]);
+
+
 
     return (
-      <InputContext.Provider value={{ address, setAddress, 
-                                      search : search, setSearch : setSearch, 
-                                      loading : loading, setLoading : setLoading}}>
+        <>
         <Header/>
-        <ResultsGrid/>
-        <SearchBar/>
-      </InputContext.Provider>
+        <InputContext.Provider value={{ address, setAddress,
+                                      userQuery, setUserQuery, hasEntered, setHasEntered, setResults}}>
+            <ScreenDelegator results={results} />
+            <SearchBar/>
+        </InputContext.Provider>
+        </>
     );
 }
 
