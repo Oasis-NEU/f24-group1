@@ -23,14 +23,16 @@ function App() {
     const [userQuery, setUserQuery] = useState('');
     const [hasEntered, setHasEntered] = useState(false);
 
+    const [results, setResults] = useState([]);
+
 
 
     return (
         <>
         <Header/>
         <InputContext.Provider value={{ address, setAddress,
-                                      userQuery, setUserQuery, hasEntered, setHasEntered }}>
-            <ScreenDelegator/>
+                                      userQuery, setUserQuery, hasEntered, setHasEntered, setResults}}>
+            <ScreenDelegator results={results} />
             <SearchBar/>
         </InputContext.Provider>
         </>

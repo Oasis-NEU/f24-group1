@@ -4,9 +4,7 @@ import '../Styles/SearchBar.css';
 import AddressForm from './AddressForm.jsx';
 
 import { InputContext } from '../App.jsx';
- /**
-  * test push/merge
-  */
+import fetchResults from "../searchResultsAPI.js";
 
 
 /**
@@ -20,7 +18,7 @@ function SearchBar() {
     /**
      * Taking address value from main App Component.
      */
-    const {address, userQuery, setUserQuery, setHasEntered} = useContext(InputContext)
+    const {address, userQuery, setUserQuery, setHasEntered, setResults} = useContext(InputContext)
 
    
     /**
@@ -29,14 +27,22 @@ function SearchBar() {
     const [locationClicked, setLocationClicked] = useState(true);
 
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = async (event) => {
         if (event.key === 'Enter' && userQuery.trim() !== '') { // don't search if only whitespace
             setHasEntered(true);
-            console.log("has entered");
-        } else {
-            console.log(`userQuery: ${userQuery}`);
+            await updateResults()
         }
     }
+
+    async function updateResults() {
+        try {
+            const tempResults = await fetchResults(userQuery);
+            setResults(tempResults);
+        } catch (error){
+            console.log(`Error fetching results: ${error}`)
+        }
+    }
+
 
     /**
      * Don't update user search bar if user has only pressed space.
@@ -61,7 +67,7 @@ function SearchBar() {
     }
 
     /**
-     * Dislays the addres components:
+     * Displays the address components:
      * @returns the address if locationClicked then display the current address
      *          otherwise dropdown the address form for user to input
      */

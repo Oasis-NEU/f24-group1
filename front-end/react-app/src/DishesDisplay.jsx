@@ -2,7 +2,9 @@ import DishCard from './DishCard';
 import './Styles/DishesDisplay.css';
 import defaultImage from './assets/logo.jpg'
 
+
 function DishesDisplay() {
+
   return (
     <div className="dishes-display">
       <DishCard 

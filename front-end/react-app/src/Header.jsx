@@ -2,12 +2,11 @@ import './Styles/Header.css'
 
 function Header() {
 
-    const name = "FoodFinderAI"
+    const name = "HungryHuskyAI"
 
     return (
         <div className="header">
-            <h1>{name}</h1> 
-
+            <h1>{name}</h1>
         </div>
     )
 }
