@@ -36,6 +36,7 @@ function SearchBar() {
 
     async function updateResults() {
         try {
+            console.log('trying to update results');
             const tempResults = await fetchResults(userQuery);
             setResults(tempResults);
         } catch (error){

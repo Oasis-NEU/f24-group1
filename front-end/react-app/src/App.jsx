@@ -1,11 +1,11 @@
 import Header from "./Header"
 import SearchBar from "./InputComponents/SearchBar.jsx"
-import {createContext, useState} from 'react';
+import {createContext, useEffect, useState} from 'react';
 import ScreenDelegator from "./ScreenDelegator.jsx";
 ;
 
 /**
- * Context for addres data
+ * Context for address data
  */
 export const InputContext = createContext();
 
@@ -25,7 +25,9 @@ function App() {
 
     const [results, setResults] = useState([]);
 
-
+    useEffect(() => {
+        console.log(results);
+    },[results])
 
     return (
         <>

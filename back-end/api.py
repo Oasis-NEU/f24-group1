@@ -11,8 +11,15 @@ How to use:
 
 from flask import Flask, request, jsonify
 from retrive_top_three import RetrieveTopThree
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+# Enable CORS for all routes and origins
+CORS(app)
+app = Flask(__name__)
+
+CORS(app, resources={r"/search": {"origins": "http://localhost:5173"}})
 
 @app.route('/search', methods = ['POST'])
 def search():
