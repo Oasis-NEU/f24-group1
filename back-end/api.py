@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-app.route('/search', methods = ['POST'])
+@app.route('/search', methods = ['POST'])
 def search():
     # convert bytes to string
     content = request.data.decode('utf-8')
@@ -15,5 +15,6 @@ def search():
     return jsonify({"message": "content recieved", "content": content}), 200
 
 
-
+if __name__ == "__main__":
+    app.run()
 
