@@ -1,12 +1,10 @@
 import {useState, useContext} from 'react';
-import Location from './Location';
-import './Styles/SearchBar.css';
-import AddressForm from './AddressForm';
+import Location from '../Location.jsx';
+import '../Styles/SearchBar.css';
+import AddressForm from './AddressForm.jsx';
 
-import { InputContext } from './App';
- /**
-  * test push/merge
-  */
+import { InputContext } from '../App.jsx';
+import fetchResults from "../searchResultsAPI.js";
 
 
 /**
@@ -20,7 +18,7 @@ function SearchBar() {
     /**
      * Taking address value from main App Component.
      */
-    const {address, search, setSearch, setLoading} = useContext(InputContext)
+    const {address, userQuery, setUserQuery, setHasEntered, setResults} = useContext(InputContext)
 
    
     /**
@@ -29,10 +27,30 @@ function SearchBar() {
     const [locationClicked, setLocationClicked] = useState(true);
 
 
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            setSearch(event.target.value);
-            setLoading(true);
+    const handleKeyDown = async (event) => {
+        if (event.key === 'Enter' && userQuery.trim() !== '') { // don't search if only whitespace
+            setHasEntered(true);
+            await updateResults()
+        }
+    }
+
+    async function updateResults() {
+        try {
+            const tempResults = await fetchResults(userQuery);
+            setResults(tempResults);
+        } catch (error){
+            console.log(`Error fetching results: ${error}`)
+        }
+    }
+
+
+    /**
+     * Don't update user search bar if user has only pressed space.
+     * @param event
+     */
+    const handleChange = (event) => {
+        if(event.target.value.trim() !== '' || userQuery.length > event.target.value.length) {
+            setUserQuery(event.target.value)
         }
     }
 
@@ -49,7 +67,7 @@ function SearchBar() {
     }
 
     /**
-     * Dislays the addres components:
+     * Displays the address components:
      * @returns the address if locationClicked then display the current address
      *          otherwise dropdown the address form for user to input
      */
@@ -67,9 +85,9 @@ function SearchBar() {
             <div className="search-bar">
                 <Location setLocationClicked={setLocationClicked}/>
                 <input
-                    value={search}
+                    value={userQuery}
                     onKeyDown={(event) => handleKeyDown(event)}
-                    onChange={(e) => setSearch(e.target.value)}
+                    onChange={(e) => handleChange(e)}
                     placeholder="Search here...">
                 </input>
 
