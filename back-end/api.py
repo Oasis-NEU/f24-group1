@@ -1,6 +1,7 @@
 # 1 POST - param - string, send back top 3 dishes. 
 
 from flask import Flask, request, jsonify
+from retrive_top_three import RetrieveTopThree
 
 app = Flask(__name__)
 
@@ -9,10 +10,13 @@ def search():
     # convert bytes to string
     content = request.data.decode('utf-8')
     #return 400 if no content provided
+    retrieve_top_three_object = RetrieveTopThree()
     if not content:
         return jsonify({"error": "no input provided"}), 400
     
-    return jsonify({"message": "content recieved", "content": content}), 200
+    l = retrieve_top_three_object.prove_work_return_json(content)
+    
+    return jsonify(l), 200
 
 
 if __name__ == "__main__":
