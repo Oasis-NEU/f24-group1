@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import Location from '../Location.jsx';
 import '../Styles/SearchBar.css';
 import AddressForm from './AddressForm.jsx';
@@ -18,29 +18,32 @@ function SearchBar() {
     /**
      * Taking address value from main App Component.
      */
-    const {address, userQuery, setUserQuery, setHasEntered, setResults, results} = useContext(InputContext)
+    const {address, userQuery, setUserQuery, hasEntered, setHasEntered, setResults, results} = useContext(InputContext)
 
-   
     /**
      * Represent is the location button was clicked.
      */
     const [locationClicked, setLocationClicked] = useState(true);
 
+    useEffect(() => {
+        async function updateResults() {
+            try {
+                console.log('FETCHING RESULTS FROM BACKEND');
+                const tempResults = (await fetchResults(userQuery)) || [];
+                setResults(tempResults);
+            } catch (error){
+                console.log(`Error fetching results: ${error}`)
+            }
+        }
+        if (hasEntered) {
+            updateResults();
+        }
+
+    },[hasEntered]);
 
     const handleKeyDown = async (event) => {
         if (event.key === 'Enter' && userQuery.trim() !== '') { // don't search if only whitespace
             setHasEntered(true);
-            await updateResults()
-        }
-    }
-
-    async function updateResults() {
-        try {
-            console.log('FETCHING RESULTS FROM BACKEND');
-            const tempResults = (await fetchResults(userQuery)) || [];
-            setResults(tempResults);
-        } catch (error){
-            console.log(`Error fetching results: ${error}`)
         }
     }
 

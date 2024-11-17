@@ -3,9 +3,9 @@
   flex-direction: column;
   align-items: center;
   width: 220px;
-  padding: 16px;
+  padding: 4vh;
   background-color: #fff;
-
+  height: 30vh;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px;
@@ -13,7 +13,7 @@
 }
 
 .dish-card:hover {
-  transform: translateY(-5px); /* Lift card on hover */
+  transform: translateY(-5vh); /* Lift card on hover */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
@@ -26,13 +26,21 @@
 }
 
 .dish-name {
-  font-size: 18px;
+  font-size: clamp(12px, 2vw, 24px);
   font-weight: bold;
   margin: 0;
   margin-bottom: 4px;
   color: black;
   background-color: white;
   text-align: center;
+}
+
+.dish-price {
+  margin-top: 0;
+  font-size: 2vh;
+  background-color: white;
+  margin-bottom: 0;
+  color: black;
 }
 
 .restaurant-name {
@@ -50,3 +58,5 @@
   background-color: #f8f9fa;
   flex-wrap: wrap; 
 }
+
+

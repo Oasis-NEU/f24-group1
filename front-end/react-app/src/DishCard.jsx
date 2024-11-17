@@ -9,11 +9,14 @@ function DishCard(props) {
     console.log("got results "+dish_name);
 
 
+    const getPrice = () => (dish_price === null) ? '$X' : '$' + dish_price;
+
     return (
         <div className="dish-card">
-            <img className="dish-image" src={dish_image} alt={'https://via.placeholder.com/150x150.png?text=Image+Not+Found'} />
             <h2 className="dish-name">{dish_name}</h2>
-
+            <img className="dish-image" src={dish_image}
+                 alt={'https://via.placeholder.com/150x150.png?text=Image+Not+Found'}/>
+            <h3 className='dish-price'>{getPrice()}</h3>
             <p className="restaurant-name">{restaurant_name}</p>
         </div>
     );
@@ -22,5 +25,5 @@ function DishCard(props) {
 export default DishCard;
 
 DishCard.propTypes = {
-  result: PropTypes.object,
+    result: PropTypes.object,
 }

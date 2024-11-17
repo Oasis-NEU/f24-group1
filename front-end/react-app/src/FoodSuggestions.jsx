@@ -13,7 +13,7 @@ function FoodSuggestions() {
     /**
      * Using the setSearch method for App component to update search value.
      */
-    const {setSearch} = useContext(InputContext);
+    const {userQuery, setUserQuery, setHasEntered} = useContext(InputContext);
 
     /**
      * List of different cruisine options.
@@ -32,9 +32,16 @@ function FoodSuggestions() {
     /**
      * Handles when food button is clicked,
      * sets the search to the cruisine name of the button.
+     * if clicked again search
      * @param {String} name 
      */
-    const handleClick = (name) => setSearch(name);
+    const handleClick = (name) => {
+        if (userQuery === name) {
+            setHasEntered(true);
+        } else {
+            setUserQuery(name);
+        }
+    }
 
     /**
      * Represents an individual button for a cruisine 

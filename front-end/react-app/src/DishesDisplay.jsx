@@ -18,8 +18,6 @@ function DishesDisplay() {
                 <div className="dishes-display">
                     {
                         results.map(result => {
-                            console.log("Handing out result");
-                            console.log(result);
                             return <DishCard key={result} result={result}/>
                         })
                     }

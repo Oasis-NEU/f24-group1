@@ -1,7 +1,6 @@
 import '../Styles/AddressForm.css';
 import {useContext, useState} from 'react';
 import {InputContext} from '../App.jsx';
-import locations from '../MockData/housingData.js';
 import PropTypes from "prop-types";
 
 
@@ -21,50 +20,13 @@ function AddressForm(props) {
     const [input, setInput] = useState("");
 
 
-    /**
-     * Handles when submission button is clicked.
-     * Sets address to current input and display user address.
-     */
-    const handleSubmitClick = () => {
-        if (input !== '') {
-            setAddress(locations[input]);
-        }else {
-            setAddress('')
-        }
-        props.setLocationClicked(prev => !prev)
-    }
-
-    /**
-     * Represent a pop-up input selections area for user to input Northeastern Housing Location.
-     * @returns the input component for selecting hou
-     */
-    function renderUniversityHousingForm() {
-        return (
-            <div className='university-address-form'>
-                <label>Housing Location</label>
-                <input list="housing-locations" 
-                       id="housing-location" 
-                       placeholder="Type or select a location..." 
-                       onChange={event => setInput(event.target.value)}></input>
-                <datalist id="housing-locations">
-                {       
-                    Object.entries(locations).map(([building, address]) => {
-                        return <option value={building} key={building+address}></option>
-                    })
-                }
-                </datalist>
-                <button onClick={handleSubmitClick}>Submit</button>
-
-            </div>
-        )
-    }
 
 
 
 
     return (
         <>
-            {renderUniversityHousingForm()}
+
         </>
         
     )
