@@ -37,6 +37,5 @@ for (i, dish) in enumerate(response.data):
     response = supabase.table("dishes_embeddings").insert({"embedding_id" : i, "dish_id" : dish_id, "embeddings": embedding.tolist()}).execute()
     print(response)
 
-
-    print(f"Updated dish {dish_name} with id {dish_id}")
+print(f"Updated dish {dish_name} with id {dish_id}")
 

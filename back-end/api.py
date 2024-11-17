@@ -3,9 +3,7 @@ How to use:
 1. Run "pip install -r requirements.txt"
 2. Run "export FLASK_APP=api.py"
 3. Run "flask run"
-
 '''
-
 
 # 1 POST - param - string, send back top 3 dishes. 
 
