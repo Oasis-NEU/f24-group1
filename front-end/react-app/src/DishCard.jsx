@@ -3,19 +3,24 @@ import PropTypes from "prop-types";
 
 
 function DishCard(props) {
-  return (
-    <div className="dish-card">
-      <img src={props.imageSrc} alt={props.dishName} className="dish-image" />
-      <h2 className="dish-name">{props.dishName}</h2>
-      <p className="restaurant-name">{props.restaurantName}</p>
-    </div>
-  );
+
+    const {restaurant_name, dish_name, dish_image, dish_price} = props.result;
+
+    console.log("got results "+dish_name);
+
+
+    return (
+        <div className="dish-card">
+            <img className="dish-image" src={dish_image} alt={'https://via.placeholder.com/150x150.png?text=Image+Not+Found'} />
+            <h2 className="dish-name">{dish_name}</h2>
+
+            <p className="restaurant-name">{restaurant_name}</p>
+        </div>
+    );
 }
 
 export default DishCard;
 
 DishCard.propTypes = {
-    imageSrc: PropTypes.string,
-    dishName: PropTypes.string,
-    restaurantName: PropTypes.string,
+  result: PropTypes.object,
 }

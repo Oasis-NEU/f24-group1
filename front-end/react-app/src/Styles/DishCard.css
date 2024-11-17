@@ -5,7 +5,7 @@
   width: 220px;
   padding: 16px;
   background-color: #fff;
-  border: 1px solid #ccc;
+
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px;
@@ -30,12 +30,15 @@
   font-weight: bold;
   margin: 0;
   margin-bottom: 4px;
-  color: #333;
+  color: black;
+  background-color: white;
+  text-align: center;
 }
 
 .restaurant-name {
   font-size: 14px;
-  color: #777;
+  background-color: white;
+  color: black;
   margin: 0;
 }
 

@@ -18,7 +18,7 @@ function SearchBar() {
     /**
      * Taking address value from main App Component.
      */
-    const {address, userQuery, setUserQuery, setHasEntered, setResults} = useContext(InputContext)
+    const {address, userQuery, setUserQuery, setHasEntered, setResults, results} = useContext(InputContext)
 
    
     /**
@@ -36,8 +36,8 @@ function SearchBar() {
 
     async function updateResults() {
         try {
-            console.log('trying to update results');
-            const tempResults = await fetchResults(userQuery);
+            console.log('FETCHING RESULTS FROM BACKEND');
+            const tempResults = (await fetchResults(userQuery)) || [];
             setResults(tempResults);
         } catch (error){
             console.log(`Error fetching results: ${error}`)

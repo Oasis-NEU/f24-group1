@@ -3,22 +3,22 @@ import './Styles/Loader.css';
 function Loader() {
     return (
         /* From Uiverse.io by Li-Deheng */ 
-        <div class="loader">
-            <div class="circle">
-                <div class="dot"></div>
-                <div class="outline"></div>
+        <div className="loader">
+            <div className="circle">
+                <div className="dot"></div>
+                <div className="outline"></div>
             </div>
-            <div class="circle">
-                <div class="dot"></div>
-                <div class="outline"></div>
+            <div className="circle">
+                <div className="dot"></div>
+                <div className="outline"></div>
             </div>
-            <div class="circle">
-                <div class="dot"></div>
-                <div class="outline"></div>
+            <div className="circle">
+                <div className="dot"></div>
+                <div className="outline"></div>
             </div>
-            <div class="circle">
-                <div class="dot"></div>
-                <div class="outline"></div>
+            <div className="circle">
+                <div className="dot"></div>
+                <div className="outline"></div>
             </div>
         </div>
     )

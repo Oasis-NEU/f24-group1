@@ -9,11 +9,12 @@ async function fetchResults(query) {
             headers: {
                 'Content-Type': 'application/json', // Content type being sent
             },
-            body: JSON.stringify(query)
+            body: JSON.stringify({"text": query, "k" : 4})
         });
 
         if (response.ok) {
-            return await response.json();
+            const data = await response.json();
+            return data.body;
         } else {
             console.error('Error sending data:', response.statusText);
         }
@@ -22,6 +23,12 @@ async function fetchResults(query) {
     }
 }
 
+// async function main() {
+//     const results =  await fetchResults("pizza");
+//     console.log(results.body);
+// }
+//
+// main();
 
 
 export default fetchResults;

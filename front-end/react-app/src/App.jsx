@@ -25,16 +25,20 @@ function App() {
 
     const [results, setResults] = useState([]);
 
-    useEffect(() => {
-        console.log(results);
-    },[results])
+
+
+
+    // useEffect(() => {
+    //     console.log("USE EFFECT - RESULTS CHANGED");
+    //     console.log(results);
+    // },[results])
 
     return (
         <>
         <Header/>
         <InputContext.Provider value={{ address, setAddress,
-                                      userQuery, setUserQuery, hasEntered, setHasEntered, setResults}}>
-            <ScreenDelegator results={results} />
+                                      userQuery, setUserQuery, hasEntered, setHasEntered, setResults, results}}>
+            <ScreenDelegator/>
             <SearchBar/>
         </InputContext.Provider>
         </>
