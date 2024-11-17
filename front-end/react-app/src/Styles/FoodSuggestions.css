@@ -3,11 +3,11 @@
     width: 50%;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    margin-bottom: 0px;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .suggestions-container button {
+    margin-top: 3vh;
     border: none;
     display: flex;
     flex-direction: column;

@@ -6,8 +6,8 @@ function DishCard(props) {
 
     const {restaurant_name, dish_name, dish_image, dish_price} = props.result;
 
-    console.log("got results "+dish_name);
 
+    const name = 'chinese';
 
     const getPrice = () => (dish_price === null) ? '$X' : '$' + dish_price;
 
@@ -15,7 +15,7 @@ function DishCard(props) {
         <div className="dish-card">
             <h2 className="dish-name">{dish_name}</h2>
             <img className="dish-image" src={dish_image}
-                 alt={'https://via.placeholder.com/150x150.png?text=Image+Not+Found'}/>
+                 alt={`https://cn-geo1.uber.com/static/mobile-content/eats/cuisine-filters/v1/${name}.png`}/>
             <h3 className='dish-price'>{getPrice()}</h3>
             <p className="restaurant-name">{restaurant_name}</p>
         </div>

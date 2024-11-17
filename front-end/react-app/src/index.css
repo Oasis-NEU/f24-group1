@@ -68,5 +68,25 @@ ipnut {
   padding: 5%;
 }
 
+.results-section {
+  display: flex;
+  flex-direction: column;
+}
+
+#clear-button {
+  align-self: center;
+  margin: auto;
+  border: 0.5px solid white;
+  border-radius: 10px;
+  font-size: 2vh;
+  padding: 1vh;
+  padding-right: 6vh;
+  padding-left: 6vh;
+  margin-botttom: 0vh;
+}
+#clear-button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
 
 
