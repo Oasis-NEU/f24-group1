@@ -100,7 +100,7 @@ def search():
         }
     return {
         "statusCode": 200,
-        "body": json.dumps(dishes.data)
+        "body": dishes.data
     }
     
 
