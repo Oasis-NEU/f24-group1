@@ -2,7 +2,7 @@ import './Styles/Header.css'
 
 function Header() {
 
-    const name = "HungryHuskyAI"
+    const name = "NEU Bites"
 
     return (
         <div className="header">
