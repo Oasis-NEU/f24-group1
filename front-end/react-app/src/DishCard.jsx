@@ -7,7 +7,7 @@ function DishCard(props) {
     const {restaurant_name, dish_name, dish_image, dish_price} = props.result;
 
 
-    const getPrice = () => (dish_price === null) ? '$X' : '$' + dish_price;
+    const getPrice = () => (dish_price === null || dish_price === 0) ? 'N/A' : '$' + dish_price;
 
     return (
         <div className="dish-card">
