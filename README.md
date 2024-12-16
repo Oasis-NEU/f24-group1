@@ -1,6 +1,6 @@
-# NAMETBD
+# NEU Bites
 
-NAMETBD is a web application designed to help Northeastern University students discover nearby food options. By leveraging semantic search and a PostgreSQL database, the platform provides personalized dish recommendations based on user prompts.
+NEU Bites is a web application designed to help Northeastern University students discover nearby food options. By leveraging semantic search and a PostgreSQL database, the platform provides personalized dish recommendations based on user prompts.
 
 ## Features
 
@@ -10,14 +10,15 @@ NAMETBD is a web application designed to help Northeastern University students d
 
 ## Tech Stack
 
-- **Backend**:
-- **Frontend**:
-- **Programming Language**:
-- **Data Processing**:
-- **Deployment**:
-
-## Setup Instructions
+- **Backend**: Flask, Supabase (PostgreSQL)
+- **Frontend**: React.js
+- **Programming Language**: Python (Backend), JavaScript (Frontend)
+- **Data Processing**: GrubHub data scraping, pgvector extension for vector-based semantic search
+- **Deployment**: AWS (Backend), Netlify (Frontend)
 
 ## Team
-
-
+- Sathvik Charugundla
+- Justin Iverson
+- Ryaken Nakamato
+- Nour Shoreibah
+- Colin Wong
