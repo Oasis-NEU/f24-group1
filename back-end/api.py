@@ -17,6 +17,7 @@ import requests
 import runpod
 import json
 import os
+import serverless_wsgi
 
 app = Flask(__name__)
 
@@ -24,9 +25,6 @@ app = Flask(__name__)
 CORS(app)
 
 load_dotenv()
-
-
-
 
 def getEmbeddings(text):
     try:
@@ -100,8 +98,10 @@ def search():
         "statusCode": 200,
         "body": dishes.data
     }
-    
 
+def lambda_handler(event, context):
+    return serverless_wsgi.handle_request(app, event, context)
+    
 
 if __name__ == "__main__":
     app.run()
