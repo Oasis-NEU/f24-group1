@@ -30,4 +30,4 @@ dist-ssr
 
 #Virtual enviorment
 venv/
-back-end/env/
+back-end/env/.venv/
