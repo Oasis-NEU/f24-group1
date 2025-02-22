@@ -27,7 +27,13 @@ function FoodSuggestions() {
      * @param {String} name the name of the cruisine
      * @returns the link (from ubereats) to the image
       */
-    const getImageLink = (name) => `https://cn-geo1.uber.com/static/mobile-content/eats/cuisine-filters/v1/${name}.png`;
+    const getImageLink = (name) => {
+        if (name == "Kebab") {
+            `https://cn-geo1.uber.com/static/mobile-content/eats/cuisine-filters/v1/Halal.png`
+        } else {
+            `https://cn-geo1.uber.com/static/mobile-content/eats/cuisine-filters/v1/${name}.png`
+        }
+    }
 
     /**
      * Handles when food button is clicked,
