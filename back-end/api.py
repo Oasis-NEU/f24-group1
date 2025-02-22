@@ -10,7 +10,7 @@ import serverless_wsgi
 REACT_BUILD_FOLDER = os.path.abspath("../front-end/react-app/dist")
 
 app = Flask(__name__, static_folder=REACT_BUILD_FOLDER, template_folder=REACT_BUILD_FOLDER)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 load_dotenv()
 
 
