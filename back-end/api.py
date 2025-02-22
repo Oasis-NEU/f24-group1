@@ -29,6 +29,8 @@ def search():
     try:
         text = request.json["text"]
         k = request.json["k"]
+        print(text)
+        print(k)
     except Exception as e:
         print(e)
         return {"statusCode": 400, "body": json.dumps({"error": "Invalid request body"})}
