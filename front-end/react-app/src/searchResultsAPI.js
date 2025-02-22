@@ -1,5 +1,5 @@
-//const url = 'http://127.0.0.1:5000/search';
-const url = 'https://hjx8hs2ox3.execute-api.us-east-2.amazonaws.com/prod/'
+const url = '/api/search';
+
 
 
 async function fetchResults(query) {
