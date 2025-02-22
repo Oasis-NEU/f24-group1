@@ -1,10 +1,10 @@
-const url = 'http://54.86.145.39:5000/api/search';
+
 
 
 
 async function fetchResults(query) {
     try {
-        const response = await fetch('http://54.86.145.39:5000/api/search', {  
+        const response = await fetch('http://neu-bites.com/api/search', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
