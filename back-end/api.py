@@ -42,7 +42,7 @@ def search():
             raise Exception("No dishes found")
     except Exception as e:
         print(e)
-        return {"statusCode": 500, "body": json.dumps({"error": "Error querying the database"})}
+        return {"statusCode": 500, "body": json.dumps({"error": "Error querying the database: " + str(e)})}
 
     return {"statusCode": 200, "body": dishes.data}
 
