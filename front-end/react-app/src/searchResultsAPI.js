@@ -4,17 +4,18 @@ const url = 'http://54.86.145.39:5000/api/search';
 
 async function fetchResults(query) {
     try {
-        const response = await fetch(url, {
-            method: 'POST', // HTTP method
+        const response = await fetch('http://54.86.145.39:5000/api/search', {  
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json', // Content type being sent
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({"text": query, "k" : 4})
+            body: JSON.stringify({ "text": query, "k": 4 })
         });
 
         if (response.ok) {
             const data = await response.json();
-            return data.body;
+            console.log("✅ API Response:", data); // Debugging line
+            return data.body;  // Ensure data.body is an array
         } else {
             console.error('Error sending data:', response.statusText);
         }
@@ -22,6 +23,8 @@ async function fetchResults(query) {
         console.error('Error occurred:', error);
     }
 }
+
+
 
 // async function main() {
 //     const results =  await fetchResults("pizza");
