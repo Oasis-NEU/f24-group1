@@ -4,7 +4,7 @@
 
 async function fetchResults(query) {
     try {
-        const response = await fetch('http://neu-bites.com/api/search', {  
+        const response = await fetch('https://neu-bites.com/api/search', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
