@@ -19,7 +19,7 @@ function FoodSuggestions() {
      * List of different cruisine options.
      */
     const options = ['Thai', 'Chinese', 'Sandwich', 'Mexican', 
-                    'Greek', 'Kebab', 'Sushi', 'Seafood', 
+                    'Greek', 'Barbecue', 'Sushi', 'Seafood', 
                     'Italian', 'Indian', 'Korean', 'Vietnamese'];
 
     /**
@@ -28,7 +28,7 @@ function FoodSuggestions() {
      * @returns the link (from ubereats) to the image
       */
     const getImageLink = (name) => {
-        if (name == "Kebab") {
+        if (name == "Barbecue") {
             return `https://cn-geo1.uber.com/static/mobile-content/eats/cuisine-filters/v1/Halal.png`
         } else {
             return `https://cn-geo1.uber.com/static/mobile-content/eats/cuisine-filters/v1/${name}.png`
