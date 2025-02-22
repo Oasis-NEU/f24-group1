@@ -7,9 +7,13 @@ import json
 import runpod
 import serverless_wsgi
 
-app = Flask(__name__, static_folder="dist", template_folder="dist")
+REACT_BUILD_FOLDER = os.path.abspath("../front-end/react-app/dist")
+
+app = Flask(__name__, static_folder=REACT_BUILD_FOLDER, template_folder=REACT_BUILD_FOLDER)
 CORS(app)
 load_dotenv()
+
+
 
 
 @app.route("/", defaults={"path": ""})
