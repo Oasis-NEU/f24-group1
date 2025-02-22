@@ -29,9 +29,9 @@ function FoodSuggestions() {
       */
     const getImageLink = (name) => {
         if (name == "Kebab") {
-            `https://cn-geo1.uber.com/static/mobile-content/eats/cuisine-filters/v1/Halal.png`
+            return `https://cn-geo1.uber.com/static/mobile-content/eats/cuisine-filters/v1/Halal.png`
         } else {
-            `https://cn-geo1.uber.com/static/mobile-content/eats/cuisine-filters/v1/${name}.png`
+            return `https://cn-geo1.uber.com/static/mobile-content/eats/cuisine-filters/v1/${name}.png`
         }
     }
 
