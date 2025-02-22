@@ -7,9 +7,8 @@ import json
 import runpod
 import serverless_wsgi
 
-REACT_BUILD_FOLDER = os.path.abspath("../front-end/react-app/dist")
 
-app = Flask(__name__, static_folder=REACT_BUILD_FOLDER, template_folder=REACT_BUILD_FOLDER)
+app = Flask(__name__)
 CORS(app, origins=["http://neu-bites.com/api/search"])
 load_dotenv()
 
@@ -46,16 +45,6 @@ def getEmbeddings(text):
         }
     return response
 
-
-
-
-
-@app.route("/", defaults={"path": ""})
-@app.route("/<path:path>")
-def serve_frontend(path):
-    if path and os.path.exists(os.path.join(app.static_folder, path)):
-        return send_from_directory(app.static_folder, path)
-    return send_from_directory(app.template_folder, "index.html")  # React SPA fallback
 
 
 @app.route("/api/search", methods=["POST"])
