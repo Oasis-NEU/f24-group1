@@ -1,13 +1,4 @@
-'''
-How to use:
-1. Run "pip install -r requirements.txt"
-2. Run "export FLASK_APP=api.py"
-3. Run "flask run"
-'''
-
-# 1 POST - param - string, send back top 3 dishes. 
-
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Blueprint
 from retrive_top_three import RetrieveTopThree
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -26,6 +17,8 @@ CORS(app)
 
 load_dotenv()
 
+api_bp = Blueprint('api', __name__, url_prefix='/api')
+
 def getEmbeddings(text):
     try:
         api_key = os.getenv('RUNPOD_KEY')
@@ -35,7 +28,7 @@ def getEmbeddings(text):
     except Exception as e:
         return {
             "statusCode": 500,
-            "body": json.dumps({"error": "Error initialzing Runpod API"})
+            "body": json.dumps({"error": "Error initializing Runpod API"})
         }
     try:
         response = endpoint.run_sync(
@@ -59,10 +52,7 @@ def getEmbeddings(text):
         }
     return response
 
-
-
-
-@app.route('/search', methods = ['POST'])
+@api_bp.route('/search', methods=['POST'])
 def search():
     try:
         text = request.json["text"]
@@ -85,7 +75,7 @@ def search():
         SUPABASE_URL = os.getenv('SUPABASE_URL')
         SUPABASE_KEY = os.getenv('SUPABASE_KEY')
         supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
-        dishes = supabase.rpc('find_top_k_dishes', params={'search_vector': embeddings,'k':k}).execute()
+        dishes = supabase.rpc('find_top_k_dishes', params={'search_vector': embeddings,'k': k}).execute()
         if len(dishes.data) == 0:
             raise Exception("No dishes found")
     except Exception as e:
@@ -101,8 +91,9 @@ def search():
 
 def lambda_handler(event, context):
     return serverless_wsgi.handle_request(app, event, context)
-    
+
+# Register the Blueprint
+app.register_blueprint(api_bp)
 
 if __name__ == "__main__":
     app.run()
-
