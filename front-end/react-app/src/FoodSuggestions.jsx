@@ -19,7 +19,7 @@ function FoodSuggestions() {
      * List of different cruisine options.
      */
     const options = ['Thai', 'Chinese', 'Sandwich', 'Mexican', 
-                    'Greek', 'Halal', 'Sushi', 'Seafood', 
+                    'Greek', 'Kebab', 'Sushi', 'Seafood', 
                     'Italian', 'Indian', 'Korean', 'Vietnamese'];
 
     /**
