@@ -13,6 +13,40 @@ app = Flask(__name__, static_folder=REACT_BUILD_FOLDER, template_folder=REACT_BU
 CORS(app, origins=["http://54.86.145.39:5000"])
 load_dotenv()
 
+def getEmbeddings(text):
+    try:
+        api_key = os.getenv('RUNPOD_KEY')
+        api_id = os.getenv('RUNPOD_ID')
+        runpod.api_key = api_key
+        endpoint = runpod.Endpoint(api_id)
+    except Exception as e:
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"error": "Error initialzing Runpod API"})
+        }
+    try:
+        response = endpoint.run_sync(
+            {
+                "input": {
+                    "model": "GIST-small-Embedding-v0",
+                    "input": text
+                }
+            }
+        )
+    except TimeoutError:
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"error": "Runpod API request timed out"})
+        }
+    except Exception as e:
+        print(e)
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"error": "Error querying Runpod API"})
+        }
+    return response
+
+
 
 
 
@@ -29,24 +63,35 @@ def search():
     try:
         text = request.json["text"]
         k = request.json["k"]
-        print(text)
-        print(k)
     except Exception as e:
         print(e)
-        return {"statusCode": 400, "body": json.dumps({"error": "Invalid request body"})}
-
+        return {
+            "statusCode": 400,
+            "body": json.dumps({"error": "Invalid request body"})
+        }
     try:
+        embeddings = getEmbeddings(text)["data"][0]["embedding"]
+    except Exception as e:
+        print(e)
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"error": "Error getting embeddings"})
+        }
+    try: 
         SUPABASE_URL = os.getenv('SUPABASE_URL')
         SUPABASE_KEY = os.getenv('SUPABASE_KEY')
         supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
-        dishes = supabase.rpc('find_top_k_dishes', params={'search_vector': text, 'k': k}).execute()
+        dishes = supabase.rpc('find_top_k_dishes', params={'search_vector': embeddings,'k':k}).execute()
         if len(dishes.data) == 0:
             raise Exception("No dishes found")
     except Exception as e:
         print(e)
-        return {"statusCode": 500, "body": json.dumps({"error": "Error querying the database: " + str(e)})}
-
-    return {"statusCode": 200, "body": dishes.data}
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"error": "Error querying the database"})
+        }
+    return {
+        "statusCode": 200, "body": dishes.data}
 
 
 def lambda_handler(event, context):
