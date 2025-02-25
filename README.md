@@ -2,7 +2,7 @@
 
 NEU Bites is a web application designed to help Northeastern University students discover nearby food options. By leveraging semantic search and a PostgreSQL database, the platform provides personalized dish recommendations based on user prompts.
 
-[![NEU Bites Website](front-end/react-app/src/assets/neubites.png)](https://neu-bites.netlify.app/)
+[![NEU Bites Website](front-end/react-app/src/assets/neubites.png)](https://neu-bites.com/)
 
 ## Features
 
